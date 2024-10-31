@@ -1,6 +1,9 @@
-const Button = () => {
+import { Button as AntdButton } from 'antd'
+
+const Button = (props: any) => {
+
   return (
-    <div></div>
+    <AntdButton {...props}></AntdButton>
   )
 }
 

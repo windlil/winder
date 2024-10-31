@@ -36,6 +36,7 @@ export const MaterialList: {
     name: string
     props: any
     icon?: ReactNode
+    children?: any[]
   }[]
 }[] = [
   {
@@ -46,7 +47,8 @@ export const MaterialList: {
         name: RenderComponentsName.Button,
         props: {
           type: 'primary',
-          size: 'normal'
+          size: 'normal',
+          children: '按钮',
         },
         icon: <SquareMousePointer />
       },
@@ -64,7 +66,10 @@ export const MaterialList: {
       {
         label: 'Flex',
         name: RenderComponentsName.Flex,
-        props: {},
+        props: {
+          gap: 10,
+        },
+        children: [],
       }
     ]
   }
