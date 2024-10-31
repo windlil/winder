@@ -8,9 +8,11 @@ const h = (renderComponentList: RenderComponentListType): ReactNode[] => {
     return createElement(component, {
       key: id,
       id,
+      'data-component-id': id,
       ...props
     }, props?.children ? props?.children : h(children ?? []))
   })
 }
 
 export default h
+

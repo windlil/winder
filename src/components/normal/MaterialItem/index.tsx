@@ -10,6 +10,7 @@ const MaterialItem: FC<{
   children?: any
 }> = ({ label, icon, props, name, children }) => {
   const setDragingStatus = useComponentsStore(state => state.setDragingStatus)
+  const setCurComponent = useComponentsStore(state => state.setCurComponent)
   const component = {
     name,
     props,
@@ -25,6 +26,7 @@ const MaterialItem: FC<{
   })
 
   useEffect(() => {
+    if (isDragging) setCurComponent(null)
     setDragingStatus(isDragging)
   }, [isDragging, setDragingStatus])
 

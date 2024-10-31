@@ -4,9 +4,9 @@ import { defineStore } from "./utils";
 interface ComponentsStore {
   isDraging: boolean
   renderComponentList: RenderComponentListType
-  curComponent: RenderComponentType | null
+  curComponentId: any
   addComponent: (comp: RenderComponentType, id?: string) => void
-  setCurComponent: (id: string) => void
+  setCurComponent: (id: string | null) => void
   setDragingStatus: (status: boolean) => void
 }
 
@@ -25,7 +25,7 @@ const findCompById = (list: RenderComponentListType, id: string): RenderComponen
 
 const useComponentsStore = defineStore<ComponentsStore>((set) => ({
   renderComponentList: [],
-  curComponent: null,
+  curComponentId: null,
   isDraging: false,
   addComponent(comp, id) {
     if (!id) {
@@ -41,7 +41,10 @@ const useComponentsStore = defineStore<ComponentsStore>((set) => ({
     }
   },
   setCurComponent(id) {
-
+    set(state => {
+      // const comp = findCompById(state.renderComponentList, id)!
+      state.curComponentId = id
+    })
   },
   setDragingStatus(status) {
     set(state => {
