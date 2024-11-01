@@ -13,3 +13,28 @@ html, body, #root {
   width: 1rem;
   height: 1rem;
 }
+
+/* 修改滚动条的宽度 */
+::-webkit-scrollbar {
+  width: 6px !important;
+}
+
+/* 修改滚动条的背景颜色 */
+::-webkit-scrollbar-track {
+  background: #f1f1f1 !important;
+}
+
+/* 修改滚动条的滑块颜色 */
+::-webkit-scrollbar-thumb {
+  background: #b4b4b4 !important;
+  border-radius: 5px !important;
+}
+
+/* 滑块悬停时的颜色 */
+::-webkit-scrollbar-thumb:hover {
+  background: #9a9a9a !important;
+}
+
+:global(.ant-form-item) {
+  margin-bottom: 0 !important;
+}

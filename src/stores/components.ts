@@ -5,6 +5,7 @@ interface ComponentsStore {
   isDraging: boolean
   renderComponentList: RenderComponentListType
   curComponentId: any
+  curComponent: RenderComponentType | null
   addComponent: (comp: RenderComponentType, id?: string) => void
   setCurComponent: (id: string | null) => void
   setDragingStatus: (status: boolean) => void
@@ -26,6 +27,7 @@ const findCompById = (list: RenderComponentListType, id: string): RenderComponen
 const useComponentsStore = defineStore<ComponentsStore>((set) => ({
   renderComponentList: [],
   curComponentId: null,
+  curComponent: null,
   isDraging: false,
   addComponent(comp, id) {
     if (!id) {
@@ -35,15 +37,20 @@ const useComponentsStore = defineStore<ComponentsStore>((set) => ({
     } else {
       set(state => {
         const parentComp = findCompById(state.renderComponentList, id)
-        console.log('comp:', comp)
         parentComp?.children?.push(comp)
       })
     }
   },
   setCurComponent(id) {
     set(state => {
-      // const comp = findCompById(state.renderComponentList, id)!
+      if (state.curComponentId === id) return
       state.curComponentId = id
+      state.curComponent = null
+      if (!id) {
+        return
+      }
+      const comp = findCompById(state.renderComponentList, id)
+      state.curComponent = comp
     })
   },
   setDragingStatus(status) {

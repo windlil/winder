@@ -2,6 +2,7 @@ import { Flex } from "antd"
 import { useDrop } from "react-dnd";
 import useComponentsStore from "@/stores/components";
 import { RenderComponentsName } from "@/schema";
+import { nanoid } from "nanoid";
 
 const FlexContainer = (props: any) => {
   const { children, id } = props
@@ -22,10 +23,18 @@ const FlexContainer = (props: any) => {
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
-    drop: (comp: any) => {
-      const { component } = comp
+    drop: (item: any) => {
+      const { component } = item
       if (component.name === RenderComponentsName['Flex']) return
-      addComponent(component, id)
+      const comp = {
+        id: `${nanoid()}`,
+        name: component.name,
+        props: component.props,
+        children: component?.children
+      }
+      addComponent({
+        ...comp,
+      }, id)
     }
   })
 

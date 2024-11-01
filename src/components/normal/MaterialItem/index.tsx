@@ -32,11 +32,11 @@ const MaterialItem: FC<{
 
   return (
     <div ref={drag} className="cursor-pointer transition text-neutral-500 hover:text-primary hover:border-primary select-none border w-24 h-9 rounded-md border-dashed border-neutral-300 flex justify-center items-center">
-      <span className='text-sm flex items-center gap-1'>
+      <span className='w-full px-2 text-sm flex items-center justify-between'>
         <span className='icon'>
           {icon}
         </span>
-        {label}
+        <span className='flex-1 text-center'>{label}</span>
       </span>
     </div>
   )

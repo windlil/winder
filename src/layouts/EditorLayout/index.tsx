@@ -7,21 +7,22 @@ const EditorLayout: FC<{
   Right: ReactNode
 }> = ({ Header, Left, Center, Right }) => {
   return (
-    <div className="size-full flex flex-col">
-      <header className="h-12 border-b border-neutral-200">
+    <div className="size-full flex flex-col overflow-hidden">
+      <header className="h-14 border-b border-neutral-200">
         {Header}
       </header>
-      <div className="flex-1 flex">
+      <div className="flex-1 flex overflow-hidden">
         <div className="w-60 border-r border-neutral-200">
           {Left}
         </div>
         <div className="flex-1 bg-neutral-100 p-4">
           {Center}
         </div>
-        <div className="w-60 border-l border-neutral-200">
+        <div className="w-60 h-[100vh] border-l border-neutral-200">
           {Right}
         </div>
       </div>
+      <div className="h-6 border-t border-neutral-200"></div>
     </div>
   )
 }
