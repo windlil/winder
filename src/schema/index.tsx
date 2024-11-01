@@ -4,6 +4,7 @@ import Input from "@/components/render/Input"
 import NumberInput from "@/components/render/NumberInput"
 import PasswordInput from "@/components/render/PasswordInput"
 import Textarea from "@/components/render/Textarea"
+import VirtualItem from '@/components/render/VirtualItem'
 
 import { LockOutlined, NumberOutlined } from "@ant-design/icons"
 import { FileType, SquareMousePointer, TextSelect } from "lucide-react"
@@ -27,6 +28,7 @@ export const RenderComponentsName = {
   NumberInput: 'NumberInput',
   PasswordInput: 'PasswordInput',
   Textarea: 'Textarea',
+  VirtualItem: 'VirtualItem'
 }
 
 // 用于映射真实渲染组件
@@ -37,6 +39,7 @@ export const RenderComponentsMap = {
   [RenderComponentsName.NumberInput]: NumberInput,
   [RenderComponentsName.PasswordInput]: PasswordInput,
   [RenderComponentsName.Textarea]: Textarea,
+  [RenderComponentsName.VirtualItem]: VirtualItem,
 }
 
 // 存储物料组件列表

@@ -16,7 +16,7 @@ const ComponentItem = ({ item }: any) => {
 }
 
 const h = (renderComponentList: RenderComponentListType): ReactNode[] => {
-  return renderComponentList.map((comp) => {
+  return renderComponentList?.map((comp) => {
     return <ComponentItem key={comp.id} item={comp}></ComponentItem>
   })
 }

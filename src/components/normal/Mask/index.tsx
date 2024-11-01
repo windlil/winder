@@ -1,5 +1,5 @@
 import useComponentsStore from "@/stores/components"
-import { Move, Trash2 } from "lucide-react"
+import { Copy, Move, MoveDown, MoveUp, Trash2 } from "lucide-react"
 import { CSSProperties, useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 
@@ -40,11 +40,19 @@ const Mask = () => {
       className='absolute bg-blue-100/40 border border-blue-400 rounded-sm'
       style={style}
     >
-      <span className="absolute transition z-[99] top-0 cursor-move left-0 bg-primary w-5 h-5 flex justify-center items-center">
-        <Move className="text-white size-full w-3 h-3" />
-      </span>
-      <div className="rounded-md absolute bottom-1 cursor-pointer right-1 bg-[#eb453b] w-5 h-5 flex justify-center items-center">
-        <Trash2 className="text-white w-3 h-3" />
+      <div className="absolute bottom-[2px] right-[2px] flex gap-1 z-[99]">
+        <div className="rounded-md  cursor-pointer bg-primary w-5 h-5 flex justify-center items-center">
+          <MoveUp className="text-white w-3 h-3" />
+        </div>
+        <div className="rounded-md  cursor-pointer bg-primary w-5 h-5 flex justify-center items-center">
+          <MoveDown className="text-white w-3 h-3" />
+        </div>
+        <div className="rounded-md  cursor-pointer bg-primary w-5 h-5 flex justify-center items-center">
+          <Copy className="text-white w-3 h-3" />
+        </div>
+        <div className="rounded-md  cursor-pointer bg-[#eb453b] w-5 h-5 flex justify-center items-center">
+          <Trash2 className="text-white w-3 h-3" />
+        </div>
       </div>
     </div>
   ), document.querySelector('#form-container') as Element)

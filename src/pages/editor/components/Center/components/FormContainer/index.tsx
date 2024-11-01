@@ -41,13 +41,11 @@ const FormContainer = () => {
     const formContainer: HTMLDivElement = document.querySelector('#form-container')!
     const createMask = (e: MouseEvent) => {
       const path = e.composedPath()
-      console.log(path)
       if (path.length) {
         for (let i = 0; i < path.length; i++) {
           const el = path[i] as HTMLElement
           const attribute = el?.getAttribute ? el?.getAttribute('data-component-id') : null
           if (attribute) {
-            console.log(el)
             setCurComponent(attribute)
             return
           }

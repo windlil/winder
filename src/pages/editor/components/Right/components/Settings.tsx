@@ -1,6 +1,7 @@
 import { SettingsMap } from "@/schema"
 import useComponentsStore from "@/stores/components"
 import { Form, Input, Select, Switch, InputNumber } from "antd"
+import styles from './index.module.less'
 
 const renderSettings = () => {
   const curComponent = useComponentsStore(state => state.curComponent)
@@ -14,7 +15,7 @@ const renderSettings = () => {
   }
 
   return (
-    <Form layout='vertical' size='small'>
+    <Form className={styles.formSettings} layout='vertical' size='small'>
       {settings.map((setting) => {
         switch (setting.type) {
           case 'input':
