@@ -5,7 +5,7 @@ const ComponentItem = ({ item }: any) => {
   if (!item) return null
   const { name, id, children, props } = item
   const component = RenderComponentsMap[name]
-  return <div data-component-id={id} className="relative flex w-full">
+  return <div data-component-id={id} className="relative flex">
       {name !== RenderComponentsName['Flex'] && <div className="absolute top-0 left-0 bottom-0 right-0 z-10"></div>}
       {createElement(component, {
       key: id,

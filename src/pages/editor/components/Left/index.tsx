@@ -9,7 +9,7 @@ const Left = () => {
           <p className=" text-sm text-neutral-600 font-bold mb-2 ml-2">{group.title}</p>
           <div className="flex gap-3 justify-between flex-wrap">
             {group.children.map(child => {
-              return <MaterialItem children={child?.children ?? []} key={child.name} name={child.name} icon={child?.icon} label={child.label} props={child.props}></MaterialItem>
+              return <MaterialItem children={child?.children ?? []} compType={child?.compType} key={child.name} name={child.name} icon={child?.icon} label={child.label} props={child.props}></MaterialItem>
             })}
           </div>
         </div>

@@ -1,26 +1,34 @@
-import { SettingsMap } from "@/schema"
+import { RenderComponentType, SettingsMap } from "@/schema"
 import useComponentsStore from "@/stores/components"
-import { Form, Input, Select, Switch, InputNumber } from "antd"
+import { Form, Input, Select, Switch, InputNumber, Divider } from "antd"
 import styles from './index.module.less'
+import { useForm } from "antd/es/form/Form"
+import { FC, useEffect } from "react"
 
-const renderSettings = () => {
-  const curComponent = useComponentsStore(state => state.curComponent)
+const renderSettings: FC<{
+  curComponent: RenderComponentType
+}> = ({ curComponent }) => {
+  const updateComponent = useComponentsStore(state => state.updateComponent)
+  const [form] = useForm()
+  const settings = SettingsMap[curComponent.name]?.group
 
-  if (!curComponent) return null
-
-  const settings = SettingsMap[curComponent.name]
-
-  if (!settings) {
-    return null
+  const handleValuesChange = (values: any) => {
+    updateComponent(values)
   }
 
+  useEffect(() => {
+    form && form.setFieldsValue(curComponent.props)
+  }, [form, curComponent])
+
   return (
-    <Form className={styles.formSettings} layout='vertical' size='small'>
-      {settings.map((setting) => {
+    curComponent.id &&  <div>
+    <Divider plain>{SettingsMap[curComponent.name]?.title}</Divider>
+    <Form onValuesChange={handleValuesChange} form={form} className={styles.formSettings} layout='vertical' size='small'>
+      {settings?.map((setting) => {
         switch (setting.type) {
           case 'input':
             return <Form.Item key={setting.name} label={`${setting.label}:`} name={setting.name}>
-              <Input defaultValue={curComponent.props?.children}></Input>
+              <Input></Input>
             </Form.Item>
           case 'select':
             return <Form.Item key={setting.name} label={`${setting.label}:`} name={setting.name}>
@@ -40,6 +48,7 @@ const renderSettings = () => {
         })
       }
     </Form>
+  </div>
   )
 }
 

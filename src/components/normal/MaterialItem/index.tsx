@@ -1,3 +1,4 @@
+import { createCode } from '@/schema/createId'
 import useComponentsStore from '@/stores/components'
 import { FC, memo, ReactNode, useEffect } from 'react'
 import { useDrag } from 'react-dnd'
@@ -8,14 +9,22 @@ const MaterialItem: FC<{
   props: any
   icon?: ReactNode
   children?: any
-}> = ({ label, icon, props, name, children }) => {
+  compType?: string
+}> = ({ label, icon, props, name, children, compType }) => {
   const setDragingStatus = useComponentsStore(state => state.setDragingStatus)
   const setCurComponent = useComponentsStore(state => state.setCurComponent)
+
+
   const component = {
     name,
-    props,
+    props: compType === 'form' ? {
+      ...props,
+      code: `${createCode()}`
+    } : props,
     children
   }
+
+  console.log(component)
 
   const [{ isDragging }, drag] = useDrag({
     type: 'Component',
