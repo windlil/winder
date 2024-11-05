@@ -14,7 +14,6 @@ const MaterialItem: FC<{
   const setDragingStatus = useComponentsStore(state => state.setDragingStatus)
   const setCurComponent = useComponentsStore(state => state.setCurComponent)
 
-
   const component = {
     name,
     props: compType === 'form' ? {

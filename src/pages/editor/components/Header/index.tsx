@@ -1,9 +1,23 @@
 import { LeftOutlined, SaveOutlined, EyeOutlined } from "@ant-design/icons"
 import { Button } from "antd"
+import useComponentsStore from "@/stores/components"
+import usePreviewStore from "@/stores/preview"
+import { useNavigate } from "react-router-dom"
 
 const Header = () => {
+  const setRenderComponents = usePreviewStore(state => state.setRenderComponents)
+  const renderComponentList = useComponentsStore(state => state.renderComponentList)
+  const navigate = useNavigate()
 
   const handleOpenBackModal = () => {
+  }
+
+  const save = () => {
+    setRenderComponents(renderComponentList)
+  }
+
+  const goPreview = () => {
+    navigate('/preview')
   }
 
   return (
@@ -14,8 +28,8 @@ const Header = () => {
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <Button icon={<EyeOutlined/ >}>预览</Button>
-        <Button type="primary" icon={<SaveOutlined/ >}>保存</Button>
+        <Button icon={<EyeOutlined/ >} onClick={goPreview}>预览</Button>
+        <Button type="primary" icon={<SaveOutlined/ >} onClick={save}>保存</Button>
       </div>
     </div>
   )

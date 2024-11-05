@@ -1,4 +1,4 @@
-import FormContainer from "./components/FormContainer"
+import FormContainer from "./components/Container"
 import useComponentsStore from "@/stores/components"
 
 const Center = () => {

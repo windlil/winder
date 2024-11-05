@@ -3,7 +3,6 @@ import useComponentsStore from "@/stores/components"
 import h from "@/core/h"
 import { useEffect } from "react"
 import Mask from "@/components/normal/Mask"
-import { Form } from "antd"
 import { createUniid } from "@/schema/createId"
 
 const FormContainer = () => {
@@ -60,9 +59,9 @@ const FormContainer = () => {
     <div ref={drop} id='form-container' className={`relative p-2 ${isOver ? 'border border-dashed border-primary-dark' : ''} 
     shadow-md rounded-sm size-full bg-white`}>
       {curComponentId && <Mask curComponentId={curComponentId} />}
-      <Form className="size-full overflow-y-auto pb-4">
+      <div className="size-full overflow-y-auto pb-4">
         {h(renderComponentList)}
-      </Form>
+      </div>
     </div>
   )
 }

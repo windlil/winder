@@ -3,10 +3,16 @@ import { useDrop } from "react-dnd";
 import useComponentsStore from "@/stores/components";
 import { RenderComponentsName } from "@/schema";
 import { createUniid } from "@/schema/createId";
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+import { ContainerName } from "@/schema";
 
 const FlexContainer = (props: any) => {
   const { children, id } = props
   const addComponent = useComponentsStore(state => state.addComponent)
+  const location = useLocation()
+  const [isPreview] = useState(location.pathname.includes('preview'))
+
   const renderChildren = () => {
     if (children && children.length) {
       return children;
@@ -18,12 +24,24 @@ const FlexContainer = (props: any) => {
     );
   };
 
+  if (isPreview) {
+    return (
+      <Flex {...props} wrap={true}  className={`min-h-14 w-full p-1 mt-2`}>
+        {renderChildren()}
+      </Flex>
+    )
+  }
+
   const [{ isOver }, drop] = useDrop({
     accept: 'Component',
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
-    drop: (item: any) => {
+    drop: (item: any, monitor) => {
+      const didDrop = monitor.didDrop()
+      if (didDrop) {
+        return
+      }
       const { component } = item
       if (component.name === RenderComponentsName['Flex']) return
       const comp = {

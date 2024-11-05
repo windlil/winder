@@ -28,7 +28,7 @@ const renderSettings: FC<{
         switch (setting.type) {
           case 'input':
             return <Form.Item key={setting.name} label={`${setting.label}:`} name={setting.name}>
-              <Input></Input>
+              <Input placeholder={setting?.placeholder}></Input>
             </Form.Item>
           case 'select':
             return <Form.Item key={setting.name} label={`${setting.label}:`} name={setting.name}>
@@ -40,7 +40,7 @@ const renderSettings: FC<{
             </Form.Item>
           case 'number':
             return <Form.Item key={setting.name} label={`${setting.label}`} name={setting.name}>
-              <InputNumber className='w-full'></InputNumber>
+              <InputNumber placeholder={setting?.placeholder} className='w-full'></InputNumber>
             </Form.Item>
           default:
             return null

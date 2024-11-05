@@ -21,6 +21,10 @@ const route: RouteObject[] = [
   {
     path: '/editor',
     element: ce(import('@/pages/editor/index'))
+  },
+  {
+    path: 'preview',
+    element: ce(import('@/pages/preview/index'))
   }
 ]
 
