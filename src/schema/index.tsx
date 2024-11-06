@@ -5,10 +5,8 @@ import Input from "@/components/render/Input"
 import NumberInput from "@/components/render/NumberInput"
 import PasswordInput from "@/components/render/PasswordInput"
 import Textarea from "@/components/render/Textarea"
-import VirtualItem from '@/components/render/VirtualItem'
+import Title from "@/components/render/Title"
 
-import { LockOutlined, NumberOutlined } from "@ant-design/icons"
-import { FileType, SquareMousePointer, TextSelect } from "lucide-react"
 import { ReactNode } from "react"
 
 // 组件
@@ -31,6 +29,7 @@ export const RenderComponentsName = {
   PasswordInput: 'PasswordInput',
   Textarea: 'Textarea',
   Form: 'Form',
+  Title: 'Title',
 }
 
 export const ContainerName = [
@@ -48,6 +47,7 @@ export const RenderComponentsMap = {
   [RenderComponentsName.PasswordInput]: PasswordInput,
   [RenderComponentsName.Textarea]: Textarea,
   [RenderComponentsName.Form]: Form,
+  [RenderComponentsName.Title]: Title
 }
 
 // 存储物料组件列表
@@ -72,9 +72,21 @@ export const MaterialList: {
           type: 'primary',
           size: 'middle',
           children: '按钮',
-          htmlType: 'submit',
         },
-        icon: <SquareMousePointer />
+      },
+    ]
+  },
+  {
+    title: '内容展示',
+    children: [
+      {
+        label: '标题',
+        name: RenderComponentsName.Title,
+        props: {
+          text: '标题',
+          level: 1,
+          fontWeight: 500
+        },
       },
     ]
   },
@@ -90,7 +102,6 @@ export const MaterialList: {
           layout: 'horizontal'
         },
         children: [],
-        icon: <FileType />
       },
       {
         label: '文本框',
@@ -101,7 +112,6 @@ export const MaterialList: {
           placeholder: '请输入内容',
           size: 'middle',
         },
-        icon: <FileType />
       },
       {
         label: '数字框',
@@ -112,7 +122,6 @@ export const MaterialList: {
           placeholder: '请输入内容',
           size: 'middle',
         },
-        icon: <NumberOutlined />
       },
       {
         label: '多行框',
@@ -123,7 +132,6 @@ export const MaterialList: {
           placeholder: '请输入内容',
           size: 'middle',
         },
-        icon: <TextSelect />
       },
       {
         label: '密码框',
@@ -135,7 +143,6 @@ export const MaterialList: {
           size: 'middle',
           visibilityToggle: true
         },
-        icon: <LockOutlined />
       },
     ]
   },
@@ -197,6 +204,55 @@ export const SettingsMap = {
         type: 'switch',
         name: 'disabled',
       },
+    ]
+  },
+  [RenderComponentsName.Title]: {
+    title: '属性设置',
+    group: [
+      {
+        label: '级别',
+        type: 'select',
+        name: 'level',
+        options: [
+          {
+            label: '1',
+            value: '1'
+          },
+          {
+            label: '2',
+            value: '2'
+          },
+          {
+            label: '3',
+            value: '3'
+          },
+          {
+            label: '4',
+            value: '4'
+          },
+          {
+            label: '5',
+            value: '5'
+          },
+        ]
+      },
+      {
+        label: '内容',
+        type: 'input',
+        name: 'text',
+        placeholder: '请输入内容',
+      },
+      {
+        label: '字体粗度',
+        type: 'number',
+        name: 'fontWeight',
+        placeholder: '请输入字体宽度(500)',
+      },
+      {
+        label: '下划线',
+        type: 'switch',
+        name: 'underline',
+      }
     ]
   },
   [RenderComponentsName.Input]: {

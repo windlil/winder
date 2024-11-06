@@ -8,6 +8,7 @@ const Mask: FC<{
 }> = ({ curComponentId }) => {
   const removeComponent = useComponentsStore(state => state.removeComponent)
   const setCurComponent = useComponentsStore(state => state.setCurComponent)
+  const curComponent = useComponentsStore(state => state.curComponent)
   const move = useComponentsStore(state => state.move)
   const [style, setStyle] = useState<CSSProperties>({})
 
@@ -47,8 +48,10 @@ const Mask: FC<{
   }
 
   useEffect(() => {
-    setStyle(getStyle())
-  }, [curComponentId])
+    setTimeout(() => {
+      setStyle(getStyle()) 
+    });
+  }, [curComponentId, curComponent?.props])
 
   return createPortal((
     <div

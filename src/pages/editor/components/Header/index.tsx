@@ -3,6 +3,7 @@ import { Button } from "antd"
 import useComponentsStore from "@/stores/components"
 import usePreviewStore from "@/stores/preview"
 import { useNavigate } from "react-router-dom"
+import SettingDialog from "./components/SettingDialog"
 
 const Header = () => {
   const setRenderComponents = usePreviewStore(state => state.setRenderComponents)
@@ -26,6 +27,9 @@ const Header = () => {
         <div onClick={handleOpenBackModal} className="cursor-pointer transition text-neutral-500 hover:text-black">
           <LeftOutlined />
         </div>
+      </div>
+      <div className="flex items-center">
+        <SettingDialog />
       </div>
       <div className="flex items-center gap-3">
         <Button icon={<EyeOutlined/ >} onClick={goPreview}>预览</Button>

@@ -118,6 +118,7 @@ const useComponentsStore = defineStore<ComponentsStore>((set) => ({
       ...comp.props,
       ...newProps,
     }
+    state.curComponent = comp
    }) 
   }
 }))

@@ -4,6 +4,7 @@ import { Form, Input, Select, Switch, InputNumber, Divider } from "antd"
 import styles from './index.module.less'
 import { useForm } from "antd/es/form/Form"
 import { FC, useEffect } from "react"
+import { SettingOutlined } from "@ant-design/icons"
 
 const renderSettings: FC<{
   curComponent: RenderComponentType
@@ -21,17 +22,20 @@ const renderSettings: FC<{
   }, [form, curComponent])
 
   return (
-    curComponent.id &&  <div>
-    <Divider plain>{SettingsMap[curComponent.name]?.title}</Divider>
+    curComponent.id &&  <div className="p-3">
+    <div className="text-sm mb-4 py-2 flex items-center gap-1">
+      <SettingOutlined />
+      {SettingsMap[curComponent.name]?.title}
+    </div>
     <Form onValuesChange={handleValuesChange} form={form} className={styles.formSettings} layout='vertical' size='small'>
       {settings?.map((setting) => {
         switch (setting.type) {
           case 'input':
-            return <Form.Item key={setting.name} label={`${setting.label}:`} name={setting.name}>
+            return <Form.Item key={setting.name} label={`${setting.label}`} name={setting.name}>
               <Input placeholder={setting?.placeholder}></Input>
             </Form.Item>
           case 'select':
-            return <Form.Item key={setting.name} label={`${setting.label}:`} name={setting.name}>
+            return <Form.Item key={setting.name} label={`${setting.label}`} name={setting.name}>
               <Select options={setting.options}></Select>
             </Form.Item>
           case 'switch':
