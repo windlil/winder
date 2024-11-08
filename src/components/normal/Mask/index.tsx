@@ -15,14 +15,14 @@ const Mask: FC<{
     if (!curComponentNode || !offsetContainerNode) return {}
     const { top, left, width, height } = curComponentNode?.getBoundingClientRect()!
     const { top: offsetTop, left: offsetLeft } = offsetContainerNode.getBoundingClientRect()
-    const style = window.getComputedStyle(curComponentNode)
-    const marginTop = parseFloat(style.marginTop)
-    const marginRight = parseFloat(style.marginRight)
-    const marginBottom = parseFloat(style.marginBottom)
-    const marginLeft = parseFloat(style.marginLeft)
+    // const style = window.getComputedStyle(curComponentNode)
+    // const marginTop = parseFloat(style.marginTop)
+    // const marginRight = parseFloat(style.marginRight)
+    // const marginBottom = parseFloat(style.marginBottom)
+    // const marginLeft = parseFloat(style.marginLeft)
 
-    const totalWidth = width + marginLeft + marginRight
-    const totalHeight = height + marginTop + marginBottom
+    const totalWidth = width
+    const totalHeight = height
 
     return {
       width: totalWidth,
