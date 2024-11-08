@@ -57,7 +57,7 @@ const FormContainer = () => {
 
   return (
     <div ref={drop} id='form-container' className={`relative p-2 ${isOver ? 'border border-dashed border-primary-dark' : ''} 
-    shadow-md rounded-sm size-full bg-white`}>
+    shadow-md size-full bg-white`}>
       {curComponentId && <Mask curComponentId={curComponentId} />}
       <div className="size-full overflow-y-auto pb-4">
         {h(renderComponentList)}

@@ -42,7 +42,7 @@ const SettingDialog = () => {
   return (
     <>
       <Button type='link' onClick={handleOpen}>全局配置</Button>
-      <Modal style={{top: '8%'}} footer={null} width={'80%'} open={open} onCancel={handleClose}>
+      <Modal style={{top: '8%'}} footer={null} width={'60%'} open={open} onCancel={handleClose}>
         <div className="size-full flex">
           <Menu
             selectedKeys={[selectKey]}

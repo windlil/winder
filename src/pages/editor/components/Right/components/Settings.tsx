@@ -5,6 +5,7 @@ import styles from './index.module.less'
 import { useForm } from "antd/es/form/Form"
 import { FC, useEffect } from "react"
 import { SettingOutlined } from "@ant-design/icons"
+import SelectVariableInput from "./SelectVariableInput"
 
 const renderSettings: FC<{
   curComponent: RenderComponentType
@@ -32,7 +33,7 @@ const renderSettings: FC<{
         switch (setting.type) {
           case 'input':
             return <Form.Item key={setting.name} label={`${setting.label}`} name={setting.name}>
-              <Input placeholder={setting?.placeholder}></Input>
+              <SelectVariableInput placeholder={setting?.placeholder}></SelectVariableInput>
             </Form.Item>
           case 'select':
             return <Form.Item key={setting.name} label={`${setting.label}`} name={setting.name}>

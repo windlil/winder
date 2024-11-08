@@ -5,6 +5,7 @@ import Right from "./components/Right"
 import Center from "./components/Center"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
+// import { useEffect } from "react"
 
 const EditorPage = () => {
 
@@ -14,6 +15,12 @@ const EditorPage = () => {
     Center: <Center />,
     Right: <Right />,
   }
+
+  // useEffect(() => {
+  //   window.onbeforeunload = function(e) {
+  //     e.preventDefault();
+  //   }
+  // }, [])
 
   return (
     <DndProvider backend={HTML5Backend}>

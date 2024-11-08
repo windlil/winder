@@ -9,6 +9,11 @@ import Title from "@/components/render/Title"
 
 import { ReactNode } from "react"
 
+export type Events = {
+  type: string
+  id: string
+}
+
 // 组件
 export interface RenderComponentType {
   id: string
@@ -16,6 +21,7 @@ export interface RenderComponentType {
   props: any
   children?: RenderComponentType[]
   parentId?: string
+  events?: Events[]
 }
 
 export type RenderComponentListType = RenderComponentType[]
@@ -497,4 +503,15 @@ export const SettingsMap = {
       },
     ]
   },
+}
+
+export const EventsMap = {
+  [RenderComponentsName.Button]: {
+    events: [
+      {
+        value: 'click',
+        label: '点击事件'
+      },
+    ]
+  }
 }

@@ -1,16 +1,13 @@
 import useComponentsStore from "@/stores/components"
-import { Copy, Move, MoveDown, MoveUp, Trash2 } from "lucide-react"
-import { CSSProperties, FC, useEffect, useState } from "react"
+import { CSSProperties, FC, useEffect, useMemo, useState } from "react"
 import { createPortal } from "react-dom"
 
 const Mask: FC<{
   curComponentId: string
 }> = ({ curComponentId }) => {
-  const removeComponent = useComponentsStore(state => state.removeComponent)
-  const setCurComponent = useComponentsStore(state => state.setCurComponent)
-  const curComponent = useComponentsStore(state => state.curComponent)
-  const move = useComponentsStore(state => state.move)
   const [style, setStyle] = useState<CSSProperties>({})
+  const curComponent = useComponentsStore(state => state.curComponent)
+  const renderComponentList = useComponentsStore(state => state.renderComponentList)
 
   const getStyle = (): CSSProperties => {
     const curComponentNode =  document.querySelector(`[data-component-id="${curComponentId}"]`)
@@ -35,43 +32,15 @@ const Mask: FC<{
     }
   }
 
-  const handleRemove = () => {
-    removeComponent(curComponentId)
-    setCurComponent(null)
-  }
-
-  const handleMove = (direction: number) => {
-    move(curComponentId, direction)
-    setTimeout(() => {
-      setStyle(getStyle())
-    });
-  }
-
   useEffect(() => {
-    setTimeout(() => {
-      setStyle(getStyle()) 
-    });
-  }, [curComponentId, curComponent?.props])
+    setStyle(getStyle)
+  }, [curComponent, renderComponentList])
 
   return createPortal((
     <div
       className='absolute bg-blue-100/40 border border-blue-400 rounded-sm'
       style={style}
     >
-      <div className="absolute bottom-[2px] right-[2px] flex gap-1 z-[99]">
-        <div onClick={() => handleMove(-1)} className="cursor-pointer bg-primary w-5 h-5 flex justify-center items-center">
-          <MoveUp className="text-white w-3 h-3" />
-        </div>
-        <div onClick={() => handleMove(1)} className="cursor-pointer bg-primary w-5 h-5 flex justify-center items-center">
-          <MoveDown className="text-white w-3 h-3" />
-        </div>
-        <div className="cursor-pointer bg-primary w-5 h-5 flex justify-center items-center">
-          <Copy className="text-white w-3 h-3" />
-        </div>
-        <div onClick={handleRemove} className="cursor-pointer bg-[#eb453b] w-5 h-5 flex justify-center items-center">
-          <Trash2 className="text-white w-3 h-3" />
-        </div>
-      </div>
     </div>
   ), document.querySelector('#form-container') as Element)
 }

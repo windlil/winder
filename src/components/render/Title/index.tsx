@@ -33,7 +33,8 @@ const Title = (props: any) => {
       className: `${underline ? 'underline' : ''}`,
       style: {
         fontWeight: fontWeight,
-      } as CSSProperties
+      } as CSSProperties,
+      ...props
     }
 
     return _props

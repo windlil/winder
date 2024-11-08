@@ -68,7 +68,7 @@ const Form = (props: any) => {
   }, [isPreview, isOver]);
 
   return (
-    <div className={className} ref={drop}>
+    <div className={className} ref={drop} data-component-id={id}>
       {children?.length ? <AntdForm className={styles.form} name={createUniid()} {..._props}>
         {children}
       </AntdForm> : <div className="w-full select-none text-neutral-400 flex justify-center items-center">

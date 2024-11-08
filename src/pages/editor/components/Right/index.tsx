@@ -4,6 +4,7 @@ import { Menu } from "antd"
 import { AppstoreOutlined } from "@ant-design/icons";
 import { Workflow } from "lucide-react";
 import { useMemo, useState } from "react";
+import FlowSetting from "./components/FlowSetting";
 
 const items = [
   {
@@ -33,7 +34,7 @@ const Right = () => {
       case '1':
         return curComponent && <Settings curComponent={curComponent} />
       case '2':
-        return null
+        return curComponent && <FlowSetting curComponent={curComponent} />
     }
   }, [selectKey, curComponent?.id])
 

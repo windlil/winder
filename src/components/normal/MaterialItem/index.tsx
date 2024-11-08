@@ -23,7 +23,6 @@ const MaterialItem: FC<{
     children
   }
 
-  console.log(component)
 
   const [{ isDragging }, drag] = useDrag({
     type: 'Component',

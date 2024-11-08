@@ -1,5 +1,6 @@
 import { RenderComponentListType, RenderComponentType } from "@/schema";
 import { defineStore } from "./utils";
+import { createUniid } from "@/schema/createId";
 
 interface ComponentsStore {
   isDraging: boolean
@@ -12,7 +13,7 @@ interface ComponentsStore {
   removeComponent: (id: string) => void
   updateComponent: (newProps: any) => void
   move: (id: string, direction: number) => void
-  copy: (id: string) => void
+  copy: () => void
 }
 
 const findCompById = (list: RenderComponentListType, id: string): RenderComponentType | null => {
@@ -105,9 +106,12 @@ const useComponentsStore = defineStore<ComponentsStore>((set) => ({
       parentList[targetIndex] = _comp
     })
   },
-  copy(id) {
+  copy() {
     set(state => {
-      
+      if (!state.curComponent) return
+      const newComponent = state.curComponent
+      newComponent.id = `${createUniid()}`
+      state.renderComponentList.push(newComponent)
     })
   },
   updateComponent(newProps) {
