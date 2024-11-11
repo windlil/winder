@@ -1,16 +1,16 @@
 import useVariableStore from "@/stores/variable"
 import { FunctionOutlined } from "@ant-design/icons"
-import { Input, Modal } from "antd"
+import { Form, Input, Modal } from "antd"
 import { FC, useState } from "react"
 import { Tag } from "antd"
 
 interface Props {
-  placeholder?: string
+  setting?: any
 }
 
 const SelectVariableInput:FC<Props> = (props) => {
   const [open, setOpen] = useState(false)
-  const { placeholder } = props
+  const { setting } = props
   const varaibleList = useVariableStore(state => state.varaibleList)
   
   const handleOpen = () => {
@@ -23,9 +23,11 @@ const SelectVariableInput:FC<Props> = (props) => {
 
   return (
     <>
-      <Input placeholder={placeholder} addonAfter={
-        <FunctionOutlined onClick={handleOpen}></FunctionOutlined>
-      }></Input>
+      <Form.Item key={setting.name} label={`${setting.label}`} name={setting.name}>
+        <Input placeholder={setting?.placeholder} addonAfter={
+          <FunctionOutlined onClick={handleOpen}></FunctionOutlined>
+        }></Input>
+      </Form.Item>
       <Modal width={'50%'} footer={null} closable={true} onCancel={handleClose} open={open} title='选择变量'>
         <div className="w-full">
           {varaibleList?.length ? varaibleList?.map((varaiable, index) => {

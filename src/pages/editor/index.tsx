@@ -6,6 +6,7 @@ import Center from "./components/Center"
 import { DndProvider } from "react-dnd"
 import { HTML5Backend } from "react-dnd-html5-backend"
 // import { useEffect } from "react"
+import Flow from "@/components/normal/Flow"
 
 const EditorPage = () => {
 

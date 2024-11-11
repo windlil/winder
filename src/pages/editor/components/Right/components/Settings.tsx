@@ -1,6 +1,6 @@
 import { RenderComponentType, SettingsMap } from "@/schema"
 import useComponentsStore from "@/stores/components"
-import { Form, Input, Select, Switch, InputNumber, Divider } from "antd"
+import { Form, Select, Switch, InputNumber } from "antd"
 import styles from './index.module.less'
 import { useForm } from "antd/es/form/Form"
 import { FC, useEffect } from "react"
@@ -32,9 +32,7 @@ const renderSettings: FC<{
       {settings?.map((setting) => {
         switch (setting.type) {
           case 'input':
-            return <Form.Item key={setting.name} label={`${setting.label}`} name={setting.name}>
-              <SelectVariableInput placeholder={setting?.placeholder}></SelectVariableInput>
-            </Form.Item>
+            return <SelectVariableInput key={setting.name} setting={setting}></SelectVariableInput>
           case 'select':
             return <Form.Item key={setting.name} label={`${setting.label}`} name={setting.name}>
               <Select options={setting.options}></Select>

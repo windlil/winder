@@ -9,7 +9,7 @@ import Title from "@/components/render/Title"
 
 import { ReactNode } from "react"
 
-export type Events = {
+export type CompEvent = {
   type: string
   id: string
 }
@@ -21,7 +21,7 @@ export interface RenderComponentType {
   props: any
   children?: RenderComponentType[]
   parentId?: string
-  events?: Events[]
+  events?: CompEvent[]
 }
 
 export type RenderComponentListType = RenderComponentType[]

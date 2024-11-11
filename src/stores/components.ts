@@ -1,4 +1,4 @@
-import { RenderComponentListType, RenderComponentType } from "@/schema";
+import { CompEvent, RenderComponentListType, RenderComponentType } from "@/schema";
 import { defineStore } from "./utils";
 import { createUniid } from "@/schema/createId";
 
@@ -14,6 +14,7 @@ interface ComponentsStore {
   updateComponent: (newProps: any) => void
   move: (id: string, direction: number) => void
   copy: () => void
+  addEvent: (event: CompEvent) => void
 }
 
 const findCompById = (list: RenderComponentListType, id: string): RenderComponentType | null => {
@@ -124,6 +125,15 @@ const useComponentsStore = defineStore<ComponentsStore>((set) => ({
     }
     state.curComponent = comp
    }) 
+  },
+  addEvent(event) {
+    set(state => {
+      if (!state.curComponent) return
+      if (!state.curComponent?.events?.length) {
+        state.curComponent.events = []
+      }
+      state.curComponent.events.push(event)
+    })
   }
 }))
 

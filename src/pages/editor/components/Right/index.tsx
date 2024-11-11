@@ -34,7 +34,7 @@ const Right = () => {
       case '1':
         return curComponent && <Settings curComponent={curComponent} />
       case '2':
-        return curComponent && <FlowSetting curComponent={curComponent} />
+        return curComponent && <FlowSetting />
     }
   }, [selectKey, curComponent?.id])
 
@@ -47,11 +47,12 @@ const Right = () => {
         <Menu
           selectedKeys={[selectKey]}
           items={items}
-          inlineCollapsed={true}
           className="w-full h-full"
           style={{
             border: 0,
           }}
+          inlineCollapsed={true}
+          mode="inline"
           onClick={handleMenuClick}
         />
       </div>
