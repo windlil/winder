@@ -32,7 +32,9 @@ const renderSettings: FC<{
       {settings?.map((setting) => {
         switch (setting.type) {
           case 'input':
-            return <SelectVariableInput key={setting.name} setting={setting}></SelectVariableInput>
+            return <Form.Item key={setting.name} label={setting.label} name={setting.name}>
+              <SelectVariableInput key={setting.name}></SelectVariableInput>
+            </Form.Item>
           case 'select':
             return <Form.Item key={setting.name} label={`${setting.label}`} name={setting.name}>
               <Select options={setting.options}></Select>

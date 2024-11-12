@@ -3,7 +3,6 @@ import { createUniid } from "@/schema/createId"
 import useComponentsStore from "@/stores/components"
 import { Button, Collapse, Dropdown } from "antd"
 import { FC, useMemo, useRef } from "react"
-import Flow from "@/components/normal/Flow";
 import { Trash2 } from "lucide-react"
 
 const FlowSetting: FC = () => {

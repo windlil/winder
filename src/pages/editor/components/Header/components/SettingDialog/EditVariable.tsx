@@ -55,12 +55,14 @@ const EditVariable = forwardRef((props: any, ref: any) => {
         addVaraible({
           name: values.name,
           type: values.type,
-          value: values.value
+          value: values.value,
+          desc: values?.desc
         })
       } else {
         editVariable(detailData.name, {
           type: values.type,
-          value: values.value
+          value: values.value,
+          desc: values?.desc
         })
       }
       setLoading(false)
