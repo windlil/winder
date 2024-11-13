@@ -1,10 +1,9 @@
 import { RenderComponentType, SettingsMap } from "@/schema"
 import useComponentsStore from "@/stores/components"
 import { Form, Select, Switch, InputNumber } from "antd"
-import styles from './index.module.less'
+import styles from '../index.module.less'
 import { useForm } from "antd/es/form/Form"
 import { FC, useEffect } from "react"
-import { SettingOutlined } from "@ant-design/icons"
 import SelectVariableInput from "./SelectVariableInput"
 
 const renderSettings: FC<{
@@ -24,10 +23,6 @@ const renderSettings: FC<{
 
   return (
     curComponent.id &&  <div className="p-3">
-    <div className="text-sm mb-4 py-2 flex items-center gap-1">
-      <SettingOutlined />
-      {SettingsMap[curComponent.name]?.title}
-    </div>
     <Form onValuesChange={handleValuesChange} form={form} className={styles.formSettings} layout='vertical' size='small'>
       {settings?.map((setting) => {
         switch (setting.type) {

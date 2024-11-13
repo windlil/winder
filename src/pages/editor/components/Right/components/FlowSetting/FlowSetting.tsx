@@ -9,10 +9,13 @@ const FlowSetting: FC = () => {
   const addEvent = useComponentsStore(state => state.addEvent)
   const curComponent = useComponentsStore(state => state.curComponent)!
   const flowRef = useRef<any>(null)
+  const events = EventsMap[curComponent.name]?.events
+
+  if (!events) {
+    return null
+  }
 
   const items = useMemo(() => {
-    const events = EventsMap[curComponent.name].events
-
     const handleItemClick = (event: any) => {
       addEvent({
         type: event.value,
@@ -65,7 +68,7 @@ const FlowSetting: FC = () => {
   const newLocal = "link";
   return (
     <div>
-      <div className="flex justify-center items-center py-2 border-b mb-2">
+      <div className="flex justify-center items-center py-2 mb-2">
         <Dropdown menu={{ items }}>
           <Button type={newLocal}>
               添加事件

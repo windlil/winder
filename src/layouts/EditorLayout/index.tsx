@@ -18,7 +18,7 @@ const EditorLayout: FC<{
         <div className="flex-1 bg-neutral-100 p-4">
           {Center}
         </div>
-        <div className="w-60 h-[100vh] border-l border-neutral-200">
+        <div className="w-72 h-[100vh] border-l border-neutral-200">
           {Right}
         </div>
       </div>

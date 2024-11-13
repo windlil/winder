@@ -63,7 +63,9 @@ const SelectVariableInput:FC = (props: any) => {
           <div className="w-full">
             {varaibleList?.length ? varaibleList?.map((varaiable, index) => {
               return (
-                <div onClick={() => selectVariable(varaiable)} className="w-full flex items-center justify-between cursor-pointer transition p-2 bg-neutral-100 mb-4 hover:bg-neutral-200 rounded-md">
+                <div onClick={() => selectVariable(varaiable)}
+                  className={`${value?.value === varaiable.name ? 'border border-primary' : ''} w-full flex items-center justify-between cursor-pointer transition p-2 bg-neutral-100 mb-4 hover:bg-neutral-200 rounded-md`}
+                >
                   <span>
                     {index + 1}、{varaiable.name}
                   </span>

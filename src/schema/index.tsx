@@ -4,6 +4,7 @@ import Form from "@/components/render/Form"
 import Input from "@/components/render/Input"
 import NumberInput from "@/components/render/NumberInput"
 import PasswordInput from "@/components/render/PasswordInput"
+import Select from "@/components/render/Select"
 import Textarea from "@/components/render/Textarea"
 import Title from "@/components/render/Title"
 
@@ -36,6 +37,7 @@ export const RenderComponentsName = {
   Textarea: 'Textarea',
   Form: 'Form',
   Title: 'Title',
+  Select: 'Select',
 }
 
 export const ContainerName = [
@@ -53,7 +55,8 @@ export const RenderComponentsMap = {
   [RenderComponentsName.PasswordInput]: PasswordInput,
   [RenderComponentsName.Textarea]: Textarea,
   [RenderComponentsName.Form]: Form,
-  [RenderComponentsName.Title]: Title
+  [RenderComponentsName.Title]: Title,
+  [RenderComponentsName.Select]: Select,
 }
 
 // 存储物料组件列表
@@ -148,6 +151,16 @@ export const MaterialList: {
           placeholder: '请输入内容',
           size: 'middle',
           visibilityToggle: true
+        },
+      },
+      {
+        label: '下拉框',
+        name: RenderComponentsName.Select,
+        compType: 'form',
+        props: {
+          label: '下拉框',
+          placeholder: '请选择内容',
+          size: 'middle',
         },
       },
     ]
@@ -500,6 +513,23 @@ export const SettingsMap = {
         type: 'number',
         name: 'wrapperOffset',
         placeholder: '请输入标签偏移',
+      },
+    ]
+  },
+  [RenderComponentsName.Select]: {
+    title: '属性设置',
+    group: [
+      {
+        label: '字段',
+        type: 'input',
+        name: 'code',
+        placeholder: '请输入唯一字段',
+      },
+      {
+        label: '占位符',
+        type: 'input',
+        name: 'placeholder',
+        placeholder: '请输入占位符',
       },
     ]
   },
